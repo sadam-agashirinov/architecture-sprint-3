@@ -5,13 +5,16 @@ skinparam wrapWidth 300
 
 title Уровень компонентов для микросервиса "Управление устройствами"
 
+Component_Ext(kafka, "Kafka")
+
 Container(device_management, "Управление устройствами", "Управление отоплением, освещением, воротами и другими устройствами") {
     Component(api, "API", "Обработка HTTP-запросов")
+    Component(kafka_client, "Kafka клиент", "Взаимодействие с шиной сообщений")
     Component(device_state_manager, "Менеджер состояния устройств", "Управление состоянием устройств")
-    ComponentDb(database, "PostgreSql")
 }
 
-Rel(api, device_state_manager, "Команды управления устройством")
-Rel(device_state_manager, database, "Сохраняет состояние устройста и иную инфу")
+Rel(api, device_state_manager, "Команды управления устройствами")
+Rel(kafka_client, device_state_manager, "Команды и запросы управления устройствами")
+Rel(kafka, kafka_client, "Чтение и запись команд")
 
 @enduml
