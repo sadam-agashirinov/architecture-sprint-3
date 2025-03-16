@@ -64,9 +64,13 @@
 
 **Диаграмма компонентов (Components)**
 
-- Диаграмма микроосервиса "Управление устройствами"
+- Диаграмма микроосервиса "Управление устройствами"\
 [device_management_compnent.puml](diagrams/device_management_compnent.puml)\
-[device_management_compnent.png](diagrams/device_management_component.png) 
+[device_management_compnent.png](diagrams/device_management_component.png)
+
+- Диаграмма микросервиса "Система подключения и настройки новых устройств"\
+[partner_integration_component.puml](diagrams/partner_integration_component.puml)\
+[partner_integration_component.png](diagrams/partner_integration_component.png)
 
 **Диаграмма кода (Code)**
 
