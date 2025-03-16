@@ -59,13 +59,14 @@
 
 **Диаграмма контейнеров (Containers)**
 
-[Диаграмма контейнеров (ms-container.puml)](diagrams/ms-container.puml)
-
-[Диаграмма контейнеров (ms-container.png)](diagrams/ms-container.png)
+[ms-container.puml](diagrams/ms-container.puml)\
+[ms-container.png](diagrams/ms-container.png)
 
 **Диаграмма компонентов (Components)**
 
-Добавьте диаграмму для каждого из выделенных микросервисов.
+- Диаграмма микроосервиса "Управление устройствами"
+[device_management_compnent.puml](diagrams/device_management_compnent.puml)\
+[device_management_compnent.png](diagrams/device_management_component.png) 
 
 **Диаграмма кода (Code)**
 

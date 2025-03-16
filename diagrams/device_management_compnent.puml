@@ -1,0 +1,15 @@
+@startuml device_management_component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Уровень компонентов для микросервиса "Управление устройствами"
+
+Container(device_management, "Управление устройствами", "Управление отоплением, освещением, воротами и другими устройствами") {
+    Component(api, "API", "Обработка HTTP-запросов")
+    Component(device_state_manager, "Менеджер состояния устройств", "Управление состоянием устройств")
+    ComponentDb(database, "PostgreSql")
+}
+
+Rel(api, device_state_manager, "Команды управления устройством")
+Rel(device_state_manager, database, "Сохраняет состояние устройста и иную инфу")
+
+@enduml
