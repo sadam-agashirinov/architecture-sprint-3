@@ -72,6 +72,10 @@
 [partner_integration_component.puml](diagrams/partner_integration_component.puml)\
 [partner_integration_component.png](diagrams/partner_integration_component.png)
 
+- Диаграмма микросервиса "Управление телеметрией и мониторинг"\
+[monitoring_telemetry_component.puml](diagrams/monitoring_telemetry_component.puml)\
+[monitoring_telemetry_component.png](diagrams/monitoring_telemetry_component.png)
+
 **Диаграмма кода (Code)**
 
 Добавьте одну диаграмму или несколько.
