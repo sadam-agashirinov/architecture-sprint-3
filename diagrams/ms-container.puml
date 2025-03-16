@@ -1,0 +1,30 @@
+@startuml ms-container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+skinparam wrapWidth 300
+
+
+title Диаграмма конейнеров для системы Теплый дом
+
+Person(user, "Пользователь", "Управляет устройствами и просматривает телеметрию через веб-интерфейс.")
+Person(device, "Устройство умного дома", "Отопления, ворота, освещение и тд")
+
+System_Boundary(ecosystem, "Экосистема умного дома") {
+    Container(device_management, "Система управления приборами умного дома", "Управлление отоплением, воротами, освещением и тд")
+    Container(monitoring_telemetry, "Система просмотра данных телеметрии и мониторинг", "Сбор данных с устройств, хранение и просмотр данных")
+    Container(parner_integration, "Система подключения и настройки новых устройств", "поддержка стандарта и протокола подключения новых устройств, первичная настройка и подключение новых устройств")
+    Container(user_interface, "Веб-интерфейс пользователя", "Веб-интерфейс для управления устройствами и просмотра телеметрии")
+    Container(api_gateway, "API Gateway")
+    ContainerQueue(kafka, "Шина данных", "Очередь данных телеметрии")
+}
+
+Rel(user, api_gateway, "Управление и настройка устройста, просмотр телеметрии")
+Rel(device, api_gateway, "Передача данных телеметрии")
+Rel(api_gateway, kafka, "Отправка данных с датчиков в очередь")
+Rel(kafka, monitoring_telemetry, "Получение данных телеметрии")
+Rel(api_gateway, device_management, "Управление и настройка устройств")
+Rel(api_gateway, user_interface, "Просмотр данных телеметрии")
+Rel(api_gateway, parner_integration, "Подключение и первичная настройка устройства")
+Rel(user_interface, monitoring_telemetry, "Получение данных телеметрии")
+
+@enduml
