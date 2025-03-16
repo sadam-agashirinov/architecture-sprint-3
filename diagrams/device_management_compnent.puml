@@ -1,6 +1,8 @@
 @startuml device_management_component
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
 
+skinparam wrapWidth 300
+
 title Уровень компонентов для микросервиса "Управление устройствами"
 
 Container(device_management, "Управление устройствами", "Управление отоплением, освещением, воротами и другими устройствами") {

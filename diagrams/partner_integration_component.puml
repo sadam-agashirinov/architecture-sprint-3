@@ -1,0 +1,17 @@
+@startuml partner_integration_component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+skinparam wrapWidth 300
+
+title Уровень компонентов для микросервиса "Система подключения и настройки новых устройств"
+
+Container(device_management, "Система подключения и настройки новых устройств", "Поддержка стандарта и протокола подключения новых устройств, первичная настройка и подключение новых устройств") {
+    Component(api, "API", "Обработка HTTP-запросов")
+    Component(device_manager, "Менеджер устройств", "Управление устройств партнера")
+    Component(protocol_manager, "Менеджер протоколов", "Преобразование данных между протоколами")
+}
+
+Rel(api, protocol_manager, "Передача команд настройки устройства")
+Rel(protocol_manager, device_manager, "Управление и настройка устройства")
+
+@enduml
