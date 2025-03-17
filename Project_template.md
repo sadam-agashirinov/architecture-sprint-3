@@ -78,7 +78,8 @@
 
 **Диаграмма кода (Code)**
 
-Добавьте одну диаграмму или несколько.
+[Адаптер протоколов (code_diagram.puml)](diagrams/code_diagram.puml)\
+[Адаптер протоколов (code_diagram.png)](diagrams/code_diagram.png)
 
 # Задание 3. Разработка ER-диаграммы
 

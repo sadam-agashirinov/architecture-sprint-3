@@ -1,0 +1,39 @@
+@startuml code_diagram
+
+skinparam classAttributeIconSize 0
+
+title Уровень кода для компонента "Адаптер протоколов"
+
+class DeviceManager {
+    + Request(device: TargetDevice): void
+}
+
+class TargetDevice {
+    + Request (): void
+}
+
+class Adapter {
+    ..attributes..
+    -adaptee: Adaptee
+
+    ..operations..
+    + Request() : void
+}
+
+class Adaptee {
+    + SpecificRequest() : void
+}
+
+DeviceManager -> TargetDevice
+TargetDevice <|-- Adapter
+Adapter -> Adaptee 
+
+
+'Заметки
+
+note top of DeviceManager: public void Request(Target target) {\n target.Request(); \n}
+note top of TargetDevice: public virtual void Request() { }
+note left of Adapter: private Adaptee adaptee = new Adaptee();\n public override void Request() {\n  adaptee.SpecificRequest();\n}
+note top of Adaptee: public void SpecificRequest() {}
+    
+@enduml
