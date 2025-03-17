@@ -1,0 +1,22 @@
+@startuml partner_integration_component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+skinparam wrapWidth 300
+
+title Уровень компонентов для микросервиса "Система подключения и настройки новых устройств"
+
+Component_Ext(kafka, "Kafka")
+
+Container(device_management, "Система подключения и настройки новых устройств", "Поддержка стандарта и протокола подключения новых устройств, первичная настройка и подключение новых устройств") {
+    Component(api, "API", "Обработка HTTP-запросов")
+    Component(device_manager, "Менеджер устройств", "Управление устройств партнера")
+    Component(protocol_adapter, "Адаптер протоколов", "Преобразование данных между протоколами")
+    Component(kafka_client, "Kafka клиент", "Взаимодействие с шиной сообщений")
+}
+
+Rel(api, protocol_adapter, "Передача команд настройки устройства")
+Rel(kafka_client, protocol_adapter, "Команды и запросы управления устройством")
+Rel(protocol_adapter, device_manager, "Управление и настройка устройства")
+Rel(kafka, kafka_client, "Чтение и запись команд")
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml monolith-context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title Контекстная диаграмма системы "Тёплый дом"
+
+Person(user, "Пользователь", "Управляет отоплением и просматривает температуру через веб-интерфейс.")
+System(monolith, "Монолитное приложение", "Управление отоплением и мониторинг температуры.")
+System(sensors, "Датчики температуры", "Сбор данных о температуре в домах.")
+
+Rel(user, monolith, "Управляет отоплением и просматривает температуру.")
+Rel(monolith, sensors, "Запрашивает данные о температуре.")
+Rel(sensors, monolith, "Отправляет данные о температуре.")
+Rel(monolith, sensors, "Установить температуру.")
+
+@enduml

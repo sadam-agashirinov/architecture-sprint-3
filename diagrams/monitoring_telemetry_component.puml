@@ -1,0 +1,21 @@
+@startuml monitoring_telemetry_component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+skinparam wrapWidth 300
+
+title Уровень компонентов для микросервиса "Управление телеметрией и мониторинг"
+
+Component_Ext(kafka, "Kafka")
+
+Container(monitoring_telemetry, "Управление телеметрией и мониторинг", "Сбор данных с устройств, хранение и просмотр данных") {
+    Component(kafka_client, "Kafka клиент", "Взаимодействие с шиной сообщений")
+    ComponentDb(storage, "Хранилище данных телеметрии", "Хранение данных телеметрии в БД")
+    Component(processor, "Обработка и агрегация данных телеметрии")
+}
+
+Rel(kafka_client, processor, "Передача данных телеметрии")
+Rel(kafka, kafka_client, "Чтение данных телеметрии")
+Rel(processor, storage, "Сохранение данных")
+Rel(processor, kafka_client, "Передача агрегированных данных")
+
+@enduml

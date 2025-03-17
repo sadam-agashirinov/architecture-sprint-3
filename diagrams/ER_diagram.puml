@@ -1,0 +1,67 @@
+@startuml er_diagram
+
+entity User {
+  *id : Guid
+  --
+  *name : varchar
+  *phone : varchar
+  *password : varchar
+  *created_at : timestamp
+}
+
+entity House {
+  *id : Guid
+  --
+  *user_id : Guid
+  *address : varchar
+  *created_at : timestamp
+}
+
+entity DeviceType {
+  *id : Guid
+  --
+  *name : varchar
+  *description : varchar
+}
+
+entity Device {
+  *id : Guid
+  --
+  *house_id : Guid
+  *type_id : Guid
+  *serial_number : varchar
+  *status : varchar
+  *created_at : timestamp
+}
+
+entity TelemetryData {
+  *id : Guid
+  --
+  *device_id : Guid
+  *value : float
+  *timestamp : timestamp
+}
+
+entity Module {
+  *id : Guid
+  --
+  *name : varchar
+  *description : varchar
+}
+
+entity UserModule {
+  *id : Guid
+  --
+  *user_id : Guid
+  *module_id : Guid
+  *is_active : boolean
+}
+
+User --o{ House
+House --o{ Device
+DeviceType--o{ Device
+Device --o{ TelemetryData
+User --o{ UserModule
+Module --o{ UserModule
+
+@enduml
